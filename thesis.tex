@@ -1,0 +1,536 @@
+\immediate\write18{makeindex \jobname.nlo -s nomencl.ist -o \jobname.nls}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+%%%%%%%%
+%pdflatex --shell-escape thesis
+%biber
+%pdflatex --shell-escape thesis
+%pdflatex --shell-escape thesis
+
+%%%%%%%
+
+
+% Use this template to produce a standard thesis that meets the Oxford University requirements for Dcsubmission
+%
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (mcmanigle@gmail.com), 2015
+% Modified by Martin Peeks (martinp23@gmail.com), 2017
+
+% I've (John) tried to comment this file extensively, so read through it to see how to use the various options.  Remember
+% that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
+% out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
+% the lines you don't want.
+
+% I (Martin) have perhaps been less good at commenting, so apologies.
+% I have added to biber.conf lots of find/replace statements to change journal names into journal abbreviations. You might need to add more patterns there if you add other journals to your bibliography.
+% Because I removed several chapters from this version for upload to github, some cross-references are broken.
+
+%%%%% CHOOSE PAGE LAYOUT
+% The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
+
+% This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+%\RequirePackage{snapshot}
+\documentclass[a4paper,twoside]{ociamthesis}
+\usepackage[export]{adjustbox}
+
+
+
+\usepackage[T1]{fontenc}
+\usepackage{textgreek}
+% This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
+%\documentclass[a4paper]{ociamthesis}
+% This one will format for PDF output (ie equal margins, no extra blank pages):
+%\documentclass[a4paper,nobind]{ociamthesis}
+
+
+%%%%% SELECT YOUR DRAFT OPTIONS
+% Three options going on here; use in any combination.  But remember to turn the first two off before
+% generating a PDF to send to the printer!
+
+% This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
+%\fancyfoot[C]{\emph{DRAFT Printed on \today}}
+
+
+
+% This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
+% paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
+% your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
+%%\correctionstrue
+
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% The science-type option: numerical in-text citation with references in order of appearance.
+\usepackage[style=chem-rsc,articletitle=true,language=british,backend=biber]{biblatex}
+\newcommand*{\bibtitle}{References}
+
+% show title for a thesis
+\DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}%\newblock
+  %\printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock%Added by Marco
+  \usebibmacro{title}%Added by Marco
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \usebibmacro{institution+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}
+
+
+% correctly format an online reference
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \iflistundef{author}
+    {\iflistundef{organization}
+      {\BibliographyWarning{No author nor organisation on Online entry}}
+      {\printlist{organization}}}
+    {\usebibmacro{author}}
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \iflistundef{author}
+    {}
+    {\printlist{organization}}
+  \newunit\newblock
+  \usebibmacro{date}%
+  \newunit\newblock
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{url+urldate}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+
+
+% if showing a full citation in line, display it correctly
+\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
+
+
+% remove brackets around the number of each bibliography entry
+\DeclareFieldFormat{labelnumberwidth}{#1\addperiod}
+
+
+% \renewbibmacro*{title}{
+%   \ifentrytype{article}% Delimit article and journal titles with a period
+%     {\adddot}
+%     {}}
+\usepackage{graphicx} % so we can put pdf figures in
+\usepackage[runs=1]{auto-pst-pdf} % necessary for chemnum. Formally, runs=2 should be used. I had more success running pdflatex twice.
+%\usepackage{chemstyle}
+\usepackage{xspace}
+\usepackage{imakeidx}
+% The humanities-type option: author-year in-text citation with an alphabetical works cited.
+%\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+%\newcommand*{\bibtitle}{Works Cited}\cmd{}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{arydshln}
+\usepackage{chemnum}
+\usepackage{siunitx}
+\usepackage{subfig}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage[intoc]{nomencl}
+\usepackage{multicol}
+\renewcommand{\nomname}{List of Abbreviations}
+\usepackage{placeins}
+\usepackage{longtable}
+\raggedbottom
+
+% chemnum config
+\setchemnum{replace-style={\scriptsize}}
+\setchemnum{log=true}
+% this makes compound labels all red, useful for checking
+%\setchemnum{replace-style={\scriptsize\color{red}},format={\color{red}\bfseries}}
+
+%\usepackage{setspace}
+%\doublespacing
+
+% set my preferred footnote symbol
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+%\renewcommand{\cite}{\autocite}
+
+%\appto{\bibsetup}{\sloppy}
+% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
+\addbibresource{thesis.bib}
+
+
+% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
+%\numberwithin{equation}{subsection}
+
+
+
+%%%%% THESIS / TITLE PAGE INFORMATION
+% Everybody needs to complete the following:
+\title{Electronic delocalisation in linear and cyclic porphyrin oligomers}
+\author{Martin D. Peeks}
+\college{Exeter College}
+
+% Master's candidates who require the alternate title page (with candidate number and word count)
+% must also un-comment and complete the following three lines:
+%\masterssubmissiontrue
+%\candidateno{933516}
+%\wordcount{28,815}
+
+% Uncomment the following line if your degree also includes exams (eg most masters):
+%\renewcommand{\submittedtext}{Submitted in partial completion of the}
+% Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
+\degreename{Doctor of Philosophy}
+% Term and year of submission, or date if your board requires (eg most masters)
+\degreedate{Michaelmas 2016}
+
+
+%%%%% YOUR OWN PERSONAL MACROS
+% This is a good place to dump your own LaTeX macros as they come up.
+
+% To make text superscripts shortcuts
+%%	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+%%	\newcommand{\nd}{\textsuperscript{nd}}
+%%	\renewcommand{\st}{\textsuperscript{st}}
+%%	\newcommand{\rd}{\textsuperscript{rd}}
+
+% I am leaving this dump of thesis-specific macros here. Delete them if you don't need them.
+
+\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
+\DeclareSIUnit\Molar{M}
+\DeclareSIUnit\ppm{ppm}
+\DeclareSIUnit\wn{\per\centi\metre}
+\DeclareSIUnit\bohr{bohr}
+\DeclareSIUnit\litre{L}
+\DeclareSIUnit\mm{\milli\metre}
+\DeclareSIUnit\mL{\milli\litre}
+\DeclareSIUnit\ml{\milli\litre}
+\DeclareSIUnit\mmol{\milli\mole}
+\DeclareSIUnit\mM{\milli\Molar}
+\DeclareSIUnit\umol{\micro\mole}
+\DeclareSIUnit\ul{\micro\litre}
+\DeclareSIUnit\uL{\micro\litre}
+\DeclareSIUnit\kjmol{\kilo\joule\per\mole}
+\DeclareSIUnit\jkmol{\joule\per\kelvin\per\mole}
+
+
+\setlength{\headheight}{27.185pt}
+
+\newcommand{\textcal}[1]{{\fontfamily{pzc}\selectfont#1}}
+\newcommand{\pol}[1]{{P}\tsub{#1}}
+\newcommand{\lp}[1]{\mbox{\textbf{\textit{l}-P{#1}}}}
+\newcommand{\cp}[1]{\mbox{\textbf{\textit{c}-P{#1}}}}
+\newcommand{\tp}[1]{\mbox{\textbf{\textit{t}-P{#1}}}}
+\newcommand{\tubewt}{\mbox{\textbf{\textit{t}-P12{$\bullet{}$T6\textsubscript{2}}}}}
+\newcommand{\p}[1]{\textbf{P{#1}}}
+\newcommand{\rwt}[1]{\mbox{\textbf{\textit{c}-P#1{$\bullet{}$T#1}}}}
+\newcommand{\temp}[1]{{\textbf{T#1}}}
+\newcommand{\bcat}[1]{\textsuperscript{\textbf{#1{+}}}}
+\newcommand{\brcat}[1]{\textsuperscript{\textbf{#1{+}$\bullet{}$}}}
+\newcommand{\cat}[1]{$^{#1+}$}
+\newcommand{\rcat}[1]{$^{#1+\cdot{}}$}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\cu}[1]{\textbf{Cu$_{\bm{#1}}$-}}
+\newcommand{\delh}{\ensuremath{\Delta H}\xspace}
+\newcommand{\dels}{\ensuremath{\Delta S}\xspace}
+%\newcommand{\kjmol}{kJ~mol$^{-1}$\xspace}
+%\newcommand{\jkmol}{J~K$^{-1}$~mol$^{-1}$\xspace}
+\newcommand{\kjmol}{\si{\kilo\joule\per\mole}\xspace}
+\newcommand{\jkmol}{\si{\joule\per\kelvin\per\mole}\xspace}
+\newcommand{\wnum}{\si{\per\centi\metre}\xspace}
+\newcommand{\symm}[2]{\textit{#1}\textsubscript{#2}\xspace}
+\newcommand{\pii}{\ensuremath{\pi}\xspace}
+%\newcommand{\wnum}{cm$^{-1}$\xspace}
+\newcommand{\sing}[1]{S\textsubscript{#1}\xspace}
+\newcommand{\trip}[1]{T\textsubscript{#1}\xspace}
+%\newcommand{\uM}{$\micro$M\xspace}
+%\newcommand{\uL}{$\micro$L\xspace}
+\newcommand{\uM}{\si{\micro\Molar}\xspace}
+\newcommand{\uL}{\si{\micro\litre}\xspace}
+\newcommand{\dcm}{\ce{CH2Cl2}\xspace}
+\newcommand{\ddcm}{\ce{CD2Cl2}\xspace}
+\newcommand{\angstrom}{\textup{\AA}\xspace}
+\newcommand{\fref}[1]{Fig.~\ref{#1}}
+\newcommand{\tref}[1]{Table~\ref{#1}}
+\newcommand{\eref}[1]{Eqn.~\eqref{#1}}
+\newcommand{\figplural}{Figures\xspace}
+\newcommand{\nmriso}[2]{\textsuperscript{#1}#2}
+\newcommand{\nd}{\textsuperscript{nd}\xspace}
+\newcommand{\rd}{\textsuperscript{rd}\xspace}
+\newcommand{\nth}{\textsuperscript{th}\xspace} %\th is taken already
+\newcommand{\textprime}{\ensuremath{^\prime}\xspace}
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\tsub}[1]{\textsubscript{#1}}
+\newcommand{\tsup}[1]{\textsuperscript{#1}}
+%\newcommand{\ltt}[1]{\textit{#1}}
+\newcommand{\ltt}[1]{#1}
+
+
+% make autoref 'chapter' -> 'Chapter'
+\renewcommand{\chapterautorefname}{Chapter}
+
+%enable protrustion of superscript numbers
+\SetProtrusion{encoding={*},family={\sfdefault},series={*},size={6,7}}
+              {1={ ,750},2={ ,500},3={ ,500},4={ ,500},5={ ,500},
+               6={ ,500},7={ ,600},8={ ,500},9={ ,500},0={ ,500}}
+
+
+% configure how SI units and ranges are shown, based on my preferences
+\sisetup{group-separator = {,}}
+\sisetup{range-phrase=--}
+\sisetup{range-units=single}
+\sisetup{separate-uncertainty = true}
+
+% start a multicolumn environment so that the list of abbreviations takes up less space
+\renewcommand*\nompreamble{\begin{multicols*}{2}}
+\renewcommand*\nompostamble{\end{multicols*}}
+
+%\makeindex
+\makenomenclature
+
+% here we want to define a toggle so we don't generate lots of frontmatter if we're just printing one chapter
+
+\newif\ifdraftch
+\draftchfalse
+%\draftchtrue
+
+%\includeonly{text/intro}
+
+
+
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+
+
+
+
+%%%%% CHOOSE YOUR LINE SPACING HERE
+% This is the official option.  Use it for your submission copy and library copy:
+\setlength{\textbaselineskip}{22pt plus2pt minus1pt}
+% This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
+%\setlength{\textbaselineskip}{18pt plus2pt minus1pt}
+
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+\setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
+
+% Leave this line alone; it gets things started for the real document.
+\setlength{\baselineskip}{\textbaselineskip}
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% You have two choices.  First, how far down are sections numbered?  (Below that, they're named but
+% don't get numbers.)  Second, what level of section appears in the table of contents?  These don't have
+% to match: you can have numbered sections that don't show up in the ToC, or unnumbered sections that
+% do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
+
+% The level that gets a number:
+\setcounter{secnumdepth}{3}
+% The level that shows up in the ToC:
+\setcounter{tocdepth}{2}
+
+%%
+%% if we're just printing a draft of a chapter, don't make any frontmatter.
+%%
+\ifdraftch
+%do nothing
+\else
+%%%%% ABSTRACT SEPARATE
+% This is used to create the separate, one-page abstract that you are required to hand into the Exam
+% Schools.  You can comment it out to generate a PDF for printing or whatnot.
+\begin{abstractseparate}
+	\input{text/abstract} % Create an abstract.tex file in the 'text' folder for your abstract.
+	%300 words
+\end{abstractseparate}
+
+% \begin{abstractseparate}
+% 	\input{text/abstractextended} % Create an abstract.tex file in the 'text' folder for your abstract.
+% 	%2500 words max
+% \end{abstractseparate}
+
+
+
+% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
+% keeping with most typesetting conventions.
+\begin{romanpages}
+
+% Title page is created here
+\maketitle
+
+%%%%% DEDICATION -- If you'd like one, un-comment the following.
+%\begin{dedication}
+%This thesis is dedicated to\\
+%someone\\
+%for some special reason\\
+%\end{dedication}
+
+%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+\begin{savequote}[8cm]
+Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.
+  \qauthor{--- Marie Sk\l{}odowska Curie, as quoted in Our Precarious Habitat (1973) by Melvin A. Benarde, p. v}
+\end{savequote}
+\begin{acknowledgements}
+ 	\input{text/acknowledgements}
+\end{acknowledgements}
+
+%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+\begin{abstract}
+	\input{text/abstract}
+\end{abstract}
+
+
+\begin{authorship}
+  \input{text/authorship}
+\end{authorship}
+
+
+%%%%% MINI TABLES
+% This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
+% (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
+% next two lines if you want a per-chapter list of figures or tables.
+\dominitoc % include a mini table of contents
+%\dominilof  % include a mini list of figures
+%\dominilot  % include a mini list of tables
+
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+\flushbottom
+
+% This is where the whole-document ToC appears:
+\microtypesetup{protrusion=false}
+\cleardoublepage
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\microtypesetup{protrusion=true}
+
+% so that we start counting references for the lop
+\newrefsection
+
+\begin{listofpubs}
+  \input{text/listofpubs}
+\end{listofpubs} \mtcaddchapter
+
+\markboth{List of Numbered Structures}{List of Numbered Structures}
+\begin{listofcpds}
+  \input{text/listofcpds}
+\end{listofcpds} \mtcaddchapter
+
+
+%\listoffigures
+%	\mtcaddchapter
+% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
+
+% Uncomment to generate a list of tables:
+%\listoftables
+%	\mtcaddchapter
+\markboth{List of Abbreviations}{List of Abbreviations}
+%%%%% LIST OF ABBREVIATIONS
+% This example includes a list of abbreviations.  Look at text/abbreviations.tex to see how that file is
+% formatted.  The template can handle any kind of list though, so this might be a good place for a
+% glossary, etc.
+%\include{text/abbreviations}
+
+
+\newlength{\nomitemorigsep}
+\setlength{\nomitemorigsep}{\nomitemsep}
+\setlength{\nomitemsep}{-\parsep}
+
+
+\renewcommand{\nomgroup}[1]{%
+\itemsep\nomitemorigsep%
+\ifthenelse{\equal{#1}{S}}{\item[\normalsize{\textbf{Symbols}}]}{%
+\ifthenelse{\equal{#1}{A}}{\item[\normalsize{\textbf{Abbreviations}}]}{}}%
+\itemsep\nomitemsep}
+%\setlength{\baselineskip}{0pt} 
+%\begin{multicols}{2}
+\small{%
+\printnomenclature[2.1cm]}
+%\end{multicols}
+	\mtcaddchapter
+% The Roman pages, like the Roman Empire, must come to its inevitable close.
+\end{romanpages}
+
+\fi
+%%%%% CHAPTERS
+% Add or remove any chapters you'd like here, by file name (excluding '.tex'):
+\flushbottom
+
+
+% so that we start counting references for the main text only
+\newrefsection
+
+\include{text/intro}
+\include{text/dimer}
+%\include{text/hexacation}
+%include{text/radical-cations}
+%\include{text/excited-arom}
+%\include{text/truncnano}
+%
+
+
+%% APPENDICES %%
+% Starts lettered appendices, adds a heading in table of contents, and adds a
+%    page that just says "Appendices" to signal the end of your main text.
+
+\startappendices
+% Add or remove any appendices you'd like here:
+%\include{text/experimental}
+%\include{text/covers}
+
+
+%%%%% REFERENCES
+
+% JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
+%\begin{savequote}[8cm]
+%The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
+%  \qauthor{--- Sir Isaiah Berlin}
+%\end{savequote}
+
+\setlength{\baselineskip}{0pt} % JEM: Single-space References
+\renewcommand*{\bibfont}{\footnotesize}
+{\renewcommand*\MakeUppercase[1]{#1}
+\printbibliography[heading=bibintoc,title={\bibtitle}]}
+
+
+\end{document}

@@ -1,0 +1,8 @@
+%!TEX root = ../thesis.tex
+%!TEX spellcheck
+
+\addcontentsline{toc}{chapter}{Statement of authorship}
+
+In \autoref{ch:radcat}, EPR results for c.w. and ENDOR measurements of porphyrin radical cations are summarised. These results were obtained and processed by Dr Claudia E. Tait (under the supervision of Prof. C. R. Timmel and with the collaboration of Dr J. Harmer).
+
+In \autoref{ch:excited-arom}, some photophysical results are presented. The radiative rates of differently sized porphyrin nanorings were measured by Ms. Juliane Q. Gong (under the supervision of Prof L. M. Herz+. 

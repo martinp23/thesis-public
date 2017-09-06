@@ -1,0 +1,360 @@
+\RequireVersions{
+  *{application}{TeX}     {1990/03/25 v3.x}
+  *{format} {LaTeX2e}     {2017/01/01 v2.e}
+  *{package}{snapshot}    {2002/03/05 v1.14}
+  *{class}  {ociamthesis} {2016/04/04 v0.0}
+  *{class}  {report}      {2014/09/29 v1.4h}
+  *{file}   {size12.clo}  {2014/09/29 v1.4h}
+  *{package}{varwidth}    {2009/03/30 v0.92;}
+  *{package}{geometry}    {2010/09/12 v5.6}
+  *{package}{keyval}      {2014/10/28 v1.15}
+  *{package}{ifpdf}       {2017/03/15 v3.2}
+  *{package}{ifvtex}      {2016/05/16 v1.6}
+  *{package}{ifxetex}     {2010/09/12 v0.6}
+  *{file}   {geometry.cfg}{0000/00/00 v0.0}
+  *{package}{xcolor}      {2016/05/11 v2.12}
+  *{file}   {color.cfg}   {2016/01/02 v1.6}
+  *{file}   {pdftex.def}  {2017/01/12 v0.06k}
+  *{package}{infwarerr}   {2016/05/16 v1.4}
+  *{package}{ltxcmds}     {2016/05/16 v1.23}
+  *{package}{fancyhdr}    {2016/09/06 v3.8}
+  *{package}{microtype}   {2016/05/14 v2.6a}
+  *{file}   {microtype-pdftex.def}{2016/05/14 v2.6a}
+  *{file}   {microtype.cfg}{2016/05/14 v2.6a}
+  *{package}{nicefrac}    {1998/08/04 v0.9b}
+  *{package}{ifthen}      {2014/09/29 v1.1c}
+  *{package}{amsmath}     {2016/11/05 v2.16a}
+  *{package}{amstext}     {2000/06/29 v2.01}
+  *{package}{amsgen}      {1999/11/30 v2.0}
+  *{package}{amsbsy}      {1999/11/29 v1.2d}
+  *{package}{amsopn}      {2016/03/08 v2.02}
+  *{package}{amssymb}     {2013/01/14 v3.01}
+  *{package}{amsfonts}    {2013/01/14 v3.01}
+  *{package}{textcomp}    {2017/02/22 v2.0g}
+  *{file}   {ts1enc.def}  {2001/06/05 v3.0e}
+  *{package}{mhchem}      {2017/01/16 v4.06}
+  *{package}{expl3}       {2017/03/18 v7019}
+  *{file}   {expl3-code.tex}{2017/03/18 v7019}
+  *{file}   {l3pdfmode.def}{2017/03/18 v7019}
+  *{package}{l3keys2e}    {2017/03/18 v7019}
+  *{package}{l3regex}     {2017/03/18 v7019}
+  *{package}{l3tl-build}  {2017/03/18 v7019}
+  *{package}{l3tl-analysis}{2017/03/18 v7019}
+  *{package}{l3str-convert}{2017/03/18 v7019}
+  *{package}{calc}        {2014/10/28 v4.3}
+  *{package}{chemgreek}   {2016/12/20 v1.1}
+  *{package}{xparse}      {2017/03/18 v7019}
+  *{package}{graphics}    {2016/10/09 v1.0u}
+  *{package}{trig}        {2016/01/03 v1.10}
+  *{file}   {graphics.cfg}{2016/06/04 v1.11}
+  *{package}{longtable}   {2014/10/28 v4.11}
+  *{package}{caption}     {2016/02/21 v3.3-144}
+  *{package}{caption3}    {2016/05/22 v1.7-166}
+  *{package}{ltcaption}   {2013/06/09 v1.4-94}
+  *{package}{multicol}    {2016/04/07 v1.8p}
+  *{package}{multirow}    {2016/11/25 v2.2}
+  *{package}{array}       {2016/10/06 v2.4d}
+  *{package}{rotating}    {2016/08/11 v2.16d}
+  *{package}{graphicx}    {2014/10/28 v1.0g}
+  *{package}{booktabs}    {2005/04/14 v1.61803}
+  *{package}{pdfpages}    {2017/01/14 v0.5h}
+  *{package}{eso-pic}     {2015/07/21 v2.0g}
+  *{package}{atbegshi}    {2016/06/09 v1.18}
+  *{file}   {pppdftex.def}{2017/01/14 v0.5h}
+  *{package}{xfrac}       {2017/03/18 v7019}
+  *{package}{xtemplate}   {2017/03/18 v7019}
+  *{package}{enumitem}    {2011/09/28 v3.5.2}
+  *{package}{dcolumn}     {2014/10/28 v1.06}
+  *{package}{appendix}    {2009/09/02 v1.2b}
+  *{package}{notoccite}   {2000/07/20 v0.0}
+  *{package}{newfloat}    {2015/09/17 v1.1-109}
+  *{package}{hyperref}    {2017/03/14 v6.85a}
+  *{package}{hobsub-hyperref}{2016/05/16 v1.14}
+  *{package}{hobsub-generic}{2016/05/16 v1.14}
+  *{package}{hobsub}      {2016/05/16 v1.14}
+  *{package}{ifluatex}    {2016/05/16 v1.4}
+  *{package}{intcalc}     {2016/05/16 v1.2}
+  *{package}{etexcmds}    {2016/05/16 v1.6}
+  *{package}{kvsetkeys}   {2016/05/16 v1.17}
+  *{package}{kvdefinekeys}{2016/05/16 v1.4}
+  *{package}{pdftexcmds}  {2017/03/19 v0.25}
+  *{package}{pdfescape}   {2016/05/16 v1.14}
+  *{package}{bigintcalc}  {2016/05/16 v1.4}
+  *{package}{bitset}      {2016/05/16 v1.2}
+  *{package}{uniquecounter}{2016/05/16 v1.3}
+  *{package}{letltxmacro} {2016/05/16 v1.5}
+  *{package}{hopatch}     {2016/05/16 v1.3}
+  *{package}{xcolor-patch}{2016/05/16 v0.0}
+  *{package}{atveryend}   {2016/05/16 v1.9}
+  *{package}{refcount}    {2016/05/16 v3.5}
+  *{package}{hycolor}     {2016/05/16 v1.8}
+  *{package}{auxhook}     {2016/05/16 v1.4}
+  *{package}{kvoptions}   {2016/05/16 v3.12}
+  *{file}   {pd1enc.def}  {2017/03/14 v6.85a}
+  *{file}   {hyperref.cfg}{2002/06/06 v1.2}
+  *{package}{url}         {2013/09/16 v3.4}
+  *{file}   {hpdftex.def} {2017/03/14 v6.85a}
+  *{package}{rerunfilecheck}{2016/05/16 v1.8}
+  *{package}{bookmark}    {2016/05/17 v1.26}
+  *{file}   {bkm-pdftex.def}{2016/05/17 v1.26}
+  *{package}{minitoc}     {2015/07/13 v61}
+  *{package}{mtcmess}     {2006/03/14 v0.0}
+  *{file}   {thesis.mtc0} {0000/00/00 v0.0}
+  *{file}   {english.mld} {2006/01/13 v0.0}
+  *{file}   {english.mld} {2006/01/13 v0.0}
+  *{package}{quotchap}    {2012/10/20 v1.1}
+  *{package}{tocbibind}   {2010/10/13 v1.5k}
+  *{package}{fontenc}     {0000/00/00 v0.0}
+  *{file}   {lgrenc.def}  {2015/12/07 v0.13.1}
+  *{file}   {greek-fontenc.def}{2015/08/04 v0.13}
+  *{file}   {ts1enc.def}  {2001/06/05 v3.0e}
+  *{file}   {t1enc.def}   {2017/02/22 v2.0g}
+  *{package}{inputenc}    {2015/03/17 v1.2c}
+  *{file}   {utf8.def}    {2017/01/28 v1.1t}
+  *{file}   {t1enc.dfu}   {2017/01/28 v1.1t}
+  *{file}   {ot1enc.dfu}  {2017/01/28 v1.1t}
+  *{file}   {omsenc.dfu}  {2017/01/28 v1.1t}
+  *{file}   {ts1enc.dfu}  {2017/01/28 v1.1t}
+  *{file}   {lgrenc.dfu}  {2015/08/05 v1.6}
+  *{package}{babel}       {2016/04/23 v3.9r}
+  *{file}   {bblopts.cfg} {2005/09/08 v0.1}
+  *{file}   {greek.ldf}   {2016/09/07 v1.9g}
+  *{file}   {english.ldf} {2017/01/24 v3.3q}
+  *{package}{csquotes}    {2017/03/11 v5.2b}
+  *{package}{etoolbox}    {2017/01/02 v2.4}
+  *{file}   {csquotes.def}{2017/03/11 v5.2b}
+  *{file}   {csquotes.cfg}{0000/00/00 v0.0}
+  *{package}{framed}      {2011/10/22 v0.96:}
+  *{package}{soul}        {2003/11/17 v2.4}
+  *{package}{lmodern}     {2009/10/30 v1.6}
+  *{package}{gensymb}     {2003/07/02 v1.0}
+  *{package}{bm}          {2017/01/16 v1.2c}
+  *{package}{sfmath}      {2007/08/27 v0.8}
+  *{package}{threeparttable}{2003/06/13 v3.0}
+  *{package}{adjustbox}   {2012/05/21 v1.0}
+  *{package}{xkeyval}     {2014/12/03 v2.7a}
+  *{file}   {xkeyval.tex} {2014/12/03 v2.7a}
+  *{package}{adjcalc}     {2012/05/16 v1.1}
+  *{package}{trimclip}    {2012/05/16 v1.0}
+  *{package}{collectbox}  {2012/05/17 v0.4b}
+  *{file}   {tc-pdftex.def}{2012/05/13 v1.0}
+  *{package}{ifoddpage}   {2016/04/23 v1.1}
+  *{package}{fontenc}     {0000/00/00 v0.0}
+  *{file}   {t1enc.def}   {2017/02/22 v2.0g}
+  *{package}{textgreek}   {2011/10/09 v0.7}
+  *{file}   {lgrenc.def}  {2015/12/07 v0.13.1}
+  *{package}{biblatex}    {2016/12/05 v3.7}
+  *{package}{logreq}      {2010/08/04 v1.0}
+  *{file}   {logreq.def}  {2010/08/04 v1.0}
+  *{package}{xstring}     {2013/10/13 v1.7c}
+  *{file}   {blx-dm.def}  {0000/00/00 v0.0}
+  *{file}   {blx-compat.def}{2016/12/05 v3.7}
+  *{file}   {biblatex.def}{2016/12/05 v3.7}
+  *{file}   {standard.bbx}{2016/12/05 v3.7}
+  *{file}   {numeric.bbx} {2016/12/05 v3.7}
+  *{file}   {numeric-comp.bbx}{2016/12/05 v3.7}
+  *{file}   {chem-rsc.bbx}{2017/02/01 v1.1s}
+  *{file}   {numeric-comp.cbx}{2016/12/05 v3.7}
+  *{file}   {chem-rsc.cbx}{2017/02/01 v1.1s}
+  *{file}   {biblatex.cfg}{0000/00/00 v0.0}
+  *{package}{auto-pst-pdf}{2009/04/26 v0.6}
+  *{package}{ifplatform}  {2010/10/22 v0.4}
+  *{package}{catchfile}   {2016/05/16 v1.7}
+  *{package}{pst-pdf}     {2017/02/25 v1.2b}
+  *{package}{luatex85}    {2016/06/15 v1.4}
+  *{package}{pstricks}    {2015/11/14 v0.62}
+  *{file}   {pstricks.tex}{2016/12/23 v2.71}
+  *{file}   {pst-xkey.tex}{2005/11/25 v1.6}
+  *{file}   {pst-fp.tex}  {2016/12/23 v2.71}
+  *{package}{preview}     {2010/02/14 v11.90}
+  *{file}   {dvips.def}   {2016/07/10 v3.1a}
+  *{package}{environ}     {2014/05/04 v0.3}
+  *{package}{trimspaces}  {2009/09/17 v1.1}
+  *{package}{xspace}      {2014/10/28 v1.13}
+  *{package}{imakeidx}    {2016/10/15 v1.3e}
+  *{package}{arydshln}    {2016/04/28 v1.73}
+  *{package}{chemnum}     {2016/04/14 v1.2}
+  *{package}{translations}{2017/03/05 v1.5a}
+  *{package}{scrlfile}    {2017/01/03 v3.22}
+  *{package}{psfrag}      {1998/04/11 v3.04}
+  *{package}{siunitx}     {2017/03/06 v2.7e}
+  *{package}{translator}  {2010/06/12 v1.10}
+  *{file}   {translator-language-mappings.tex}{0000/00/00 v0.0}
+  *{package}{subfig}      {2005/06/28 v1.3}
+  *{package}{pdflscape}   {2016/05/14 v0.11}
+  *{package}{lscape}      {2000/10/22 v3.01}
+  *{package}{nomencl}     {2005/09/22 v4.2}
+  *{package}{placeins}    {2005/04/18 v2.2}
+  *{file}   {english.lbx} {2016/12/05 v3.7}
+  *{file}   {british.lbx} {2016/12/05 v3.7}
+  *{file}   {greek.lbx}   {2016/12/05 v3.7}
+  *{file}   {ts1cmr.fd}   {2014/09/29 v2.5h}
+  *{file}   {lgrcmr.fd}   {2016/03/04 v1.1}
+  *{file}   {t1lmss.fd}   {2009/10/30 v1.6}
+  *{file}   {supp-pdf.mkii}{0000/00/00 v0.0}
+  *{package}{nameref}     {2016/05/21 v2.44}
+  *{package}{gettitlestring}{2016/05/16 v1.5}
+  *{file}   {thesis.bbl}  {0000/00/00 v0.0}
+  *{file}   {translations-basic-dictionary-english.trsl}{(english v0.0}
+  *{file}   {translator-basic-dictionary-English.dict}{0000/00/00 v0.0}
+  *{file}   {siunitx-abbreviations.cfg}{2017/03/06 v2.7e}
+  *{file}   {omllmm.fd}   {2009/10/30 v1.6}
+  *{file}   {omslmsy.fd}  {2009/10/30 v1.6}
+  *{file}   {omxlmex.fd}  {2009/10/30 v1.6}
+  *{file}   {umsa.fd}     {2013/01/14 v3.01}
+  *{file}   {mt-msa.cfg}  {2006/02/04 v1.1}
+  *{file}   {umsb.fd}     {2013/01/14 v3.01}
+  *{file}   {mt-msb.cfg}  {2005/06/01 v1.0}
+  *{file}   {ot1lmr.fd}   {2009/10/30 v1.6}
+  *{file}   {mt-cmr.cfg}  {2013/05/19 v2.2}
+  *{file}   {ts1lmss.fd}  {2009/10/30 v1.6}
+  *{file}   {ot1lmtt.fd}  {2009/10/30 v1.6}
+  *{file}   {./text/abstract.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/beltcrest.pdf}{0000/00/00 v0.0}
+  *{file}   {t1put.fd}    {2001/06/04 v1/put.}
+  *{file}   {./text/acknowledgements.tex}{0000/00/00 v0.0}
+  *{file}   {./text/abstract.tex}{0000/00/00 v0.0}
+  *{file}   {./text/authorship.tex}{0000/00/00 v0.0}
+  *{file}   {./text/listofpubs.tex}{0000/00/00 v0.0}
+  *{file}   {./text/listofcpds.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/porphine.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/tpp.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/dpm.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/dyad.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/switch.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/osuka52.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/benzene.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/cot.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/cbd.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/tenannulene.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/homoarom.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/trishomoarom.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/anthracene.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/phenanthrene.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/anthYes.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/anthNo.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/HBC.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/herges.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/p2.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/monoacfc.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/diacfc.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/thnneut.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/thnneut.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/bahaneut.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/tphN.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/dibahaneut.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/ct.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/wurster.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/wudl.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/cpds/bisAr3N.pdf}{0000/00/00 v0.0}
+  *{file}   {./thesis.nls}  {0000/00/00 v0.0}
+  *{file}   {./text/intro.tex}{0000/00/00 v0.0}
+  *{file}   {t1lmr.fd}    {2009/10/30 v1.6}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/intro/porphy-supra.png}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/intro/ngram.pdf}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/intro/huckel.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/intro/ring-current.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/intro/acid.pdf}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/intro/ise-vs-pielec.pdf}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/intro/mobius.pdf}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./text/dimer.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-1.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Table-1-Display.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-2b.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-3.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/si-p1-vt-f1.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-4.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-5.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/si-small-angles-f2.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-6.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/si-p2fl-comb.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/si-vibrations-s3.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-7.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-8.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-9.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-10.png}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/homo-lumo.png}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/si-s4.png}{0000/00/00 v0.0}
+  *{file}   {./figures/dimer/Figure-11.png}{0000/00/00 v0.0}
+  *{file}   {./text/hexacation.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/nanoringcdx.png}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {lgrlmss.fd}  {2016/03/04 v1.1}
+  *{file}   {./figures/hexacation/nics-acid-main.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/more-nics.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/NICSaxes.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/nics-oop.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/more-acid.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/swv.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/oxidants.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/oxidation-nmr-spec.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/4cat-tocsy-noesy.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/6cat-comp-spec.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/12cat-noesy-cosy.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/12cat-noe-buildup.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/big-ring-linear.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/swv-and-dimer-orb.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/temp-comp-comp.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/vt-comp.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/evans.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/exsy-fits.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/hexacation/oxidation-nmr-spec-full.pdf}{0000/00/00 v0.0}
+  *{file}   {./text/radical-cations.tex}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/radcat/mv-transitions.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/p3-raw.png}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/p3-trimmed.png}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/p3-merged-2.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/func-vs-excit.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/composite-contours.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/excitations-in-pcps.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/monocat-uv-vis-nir-ir.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/fano-region.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/radcat-raman-ir-comp.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/morse-potentials.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/meier-combined.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/ndeloc.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/bla-and-spin-density.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/dft-vs-expt-monocat-abs.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/p2-calc-ir.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/cp6-bla.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/epr-cw.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/endor.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/radcat/endor-fit.pdf}{0000/00/00 v0.0}
+  *{file}   {./text/excited-arom.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/excited/ring-size-fos.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/excited/odd-even-nics-spin.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/excited/lifetimes.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/excited/jg-radrate-95pcCI.pdf}{0000/00/00 v0.0}
+  *{file}   {./text/truncnano.tex}{0000/00/00 v0.0}
+  *{file}   {./thesis-pics.pdf}{Graphic v0.0}
+  *{file}   {./figures/truncnano/structures.png}{0000/00/00 v0.0}
+  *{file}   {./figures/truncnano/bond-length-differences.pdf}{0000/00/00 v0.0}
+  *{file}   {./figures/truncnano/nics-all.pdf}{0000/00/00 v0.0}
+  *{file}   {./text/experimental.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/experimental/gpc-times.pdf}{0000/00/00 v0.0}
+  *{file}   {./text/covers.tex}{0000/00/00 v0.0}
+  *{file}   {./figures/covers/acid-side.jpg}{0000/00/00 v0.0}
+  *{file}   {./figures/covers/acid-top.jpg}{0000/00/00 v0.0}
+  *{file}   {./figures/covers/nics-cover-side-small.jpg}{0000/00/00 v0.0}
+  *{file}   {./figures/covers/nics-cover-top.jpg}{0000/00/00 v0.0}
+  *{file}   {t1lmtt.fd}   {2009/10/30 v1.6}
+}
