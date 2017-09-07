@@ -8,11 +8,12 @@ The template is taken from here: https://www.oxfordechoes.com/oxford-thesis-temp
 
 How to build?
 
-pdflatex --shell-escape thesis
+```
+pdflatex --shell-escape thesis 
 biber thesis
 pdflatex --shell-escape thesis
 pdflatex --shell-escape thesis
-
+```
 
 
 I used MikTeX on Windows. The list of packages is in the thesis.dep file. If you find builds failing, as a first step remove all of the Aux files. I also used LaTeXTools in Sublime Text 3.
